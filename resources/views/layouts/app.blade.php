@@ -1,55 +1,12 @@
-<!DOCTYPE html>
-<html lang="{{ config('app.locale') }}">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('light-bootstrap-dashboard::layouts.main')
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-    <!-- Scripts -->
-    <script>
-        window.Laravel = {!! json_encode([
-            'csrfToken' => csrf_token(),
-        ]) !!};
-    </script>
-</head>
-<body>
-
-<header>
-    @if (Route::has('login'))
-        <div class="top-right links">
-            @if (Auth::check())
-                <a href="{{ url('/home') }}">Home</a>
-                <a href="{{ route('logout') }}"
-                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                    Logout
-                </a>
-
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                </form>
-            @else
-                <a href="{{ url('/login') }}">Login</a>
-                <a href="{{ url('/register') }}">Register</a>
-            @endif
-        </div>
-    @endif
-</header>
-
-<div class="content">
-    @yield('content')
-</div>
-
-<!-- Scripts -->
-<script src="{{ asset('js/app.js') }}"></script>
-
-</body>
-</html>
+@section('sidebar-menu')
+  <ul class="nav">
+    <li @if(isset($page) && $page == 'dolls')class="active"@endif><a class="nav-link" href="/dolls"><i class="pe-7s-user"></i> <p>Dolls</p></a></li>
+    {{--<li @if(isset($page) && $page == 'tasks')class="active"@endif><a class="nav-link" href="#"><i class="pe-7s-pen"></i> <p>Tasks</p></a></li>--}}
+    {{--<li><a class="nav-link" href="#"><i class="pe-7s-cash"></i> <p>Finances</p></a></li>--}}
+    <li><a class="nav-link" target="_blank" href="//53stitches.com"><i class="nc-icon nc-tv-2"></i> <p>53stitches</p></a></li>
+    <li><a class="nav-link" target="_blank" href="//53stitches.etsy.com"><i class="nc-icon nc-money-coins"></i> <p>Etsy</p></a></li>
+    <li><a class="nav-link" target="_blank" href="//www.ravelry.com"><i class="nc-icon nc-palette"></i> <p>Ravelry</p></a></li>
+  </ul>
+@endsection

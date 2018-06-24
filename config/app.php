@@ -179,7 +179,8 @@ return [
 
 
         //
-        Collective\Html\HtmlServiceProvider::class
+        Collective\Html\HtmlServiceProvider::class,
+        Atnic\LightBootstrapDashboard\Providers\AppServiceProvider::class
 
     ],
 

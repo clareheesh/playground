@@ -1,59 +1,23 @@
-//  Header
-header {
-  position: relative;
-  z-index: 100;
-  min-height: $header-height;
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One|Roboto');
+
+$font-family-base: 'Roboto', $font-family-sans-serif;
+
+h1, h2, h3, h4, h5, h6, th, .btn {
+  font-family: 'Fjalla One', $font-family-base;
 }
 
-html, body {
-  background-color: #fff;
-  color: #636b6f;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 100;
-  height: 100vh;
-  margin: 0;
+.main-panel > .content {
+  padding: 30px;
 }
 
-.full-height {
-  min-height: 100vh;
+.table > thead > tr > th.text-center {
+  text-align: center !important;
 }
 
-.flex-center {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+[v-cloak] {
+  display: none;
 }
 
-.position-rel {
-  position: relative;
-}
-
-.top-right {
-  position: absolute;
-  right: 10px;
-  top: 18px;
-}
-
-.content {
-  text-align: center;
-  margin: 30px 0;
-}
-
-.title {
-  font-size: 84px;
-}
-
-.links > a {
-  color: #636b6f;
-  padding: 0 25px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: .1rem;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-
-.m-b-md {
-  margin-bottom: 30px;
+.table-warning {
+  background-color: rgba(255, 232, 161, .05);
 }

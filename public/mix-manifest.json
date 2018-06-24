@@ -1,4 +1,15 @@
 {
-  "/js/app.js": "/js/app.js",
-  "/css/app.css": "/css/app.css"
+    "/js/vendor.js": "/js/vendor.js?id=8dab3e96ce8414ace611",
+    "/js/app.js": "/js/app.js?id=f5cf304e62fccb8a1079",
+    "/css/app.css": "/css/app.css?id=d868efd0669f7021b30e",
+    "/css/auth.css": "/css/auth.css?id=acef1ae71718e1ab2cc8",
+    "/css/light-bootstrap-dashboard.css": "/css/light-bootstrap-dashboard.css?id=e27f469947a15e70335d",
+    "/js/auth.js": "/js/auth.js?id=039cfcd408d1eeaaafee",
+    "/js/light-bootstrap-dashboard.js": "/js/light-bootstrap-dashboard.js?id=34ec727d1a8ec0353e0e",
+    "/js/manifest.js": "/js/manifest.js?id=237a6a5bbfdc726b4b1d",
+    "/images/sidebar-1.jpg": "/images/sidebar-1.jpg?id=0570b28a99b11a0e30c6",
+    "/images/sidebar-2.jpg": "/images/sidebar-2.jpg?id=5e90222afa729428b3fd",
+    "/images/sidebar-3.jpg": "/images/sidebar-3.jpg?id=118a647cfb431cdd3553",
+    "/images/sidebar-4.jpg": "/images/sidebar-4.jpg?id=dde1c2bd33c1ce038320",
+    "/images/sidebar-5.jpg": "/images/sidebar-5.jpg?id=97e5bace6f3e7a0b2ae9"
 }
