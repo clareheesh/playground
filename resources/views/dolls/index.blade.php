@@ -118,7 +118,7 @@
             <div class="card text-white bg-dark">
               <div class="card-body">
                 <h1>@{{ totals.ideal }}</h1>
-                <p>Stock Remaining <small><em>(@{{ Math.round((totals.stock / daysUntil) / 7, 1) }} per week)</em></small></p>
+                <p>Stock Remaining <small><em>(@{{ (totals.ideal / (daysUntil / 7)).toFixed(1) }} per week)</em></small></p>
               </div>
             </div>
           </div>
@@ -127,7 +127,7 @@
             <div class="card text-white bg-info">
               <div class="card-body">
                 <h1>@{{ totals.stock }}</h1>
-                <p>Stock Available</p>
+                <p>Stock Available <small><em>($@{{ totals.value }})</em></small></p>
               </div>
             </div>
           </div>
@@ -142,6 +142,7 @@
               <th @click="sortBy('priority')" class="text-center" scope="col">Priority</th>
               <th @click="sortBy('stock')" class="text-center" scope="col">Actual Stock</th>
               <th @click="sortBy('ideal')" class="text-center" scope="col">Ideal Stock</th>
+              <th @click="sortBy('remaining')" class="text-center" scope="col">Remaining</th>
               <th @click="sortBy('price')" class="text-center" scope="col">Price</th>
               <th @click="sortBy('rank')" scope="col">Rank</th>
               <th @click="sortBy('etsy_id')" scope="col">Etsy ID</th>
@@ -151,12 +152,13 @@
           </thead>
 
           <tbody>
-            <tr v-for="doll of dolls" :class="=doll.ideal < doll.stock ? 'table-warning' :''">
+            <tr v-for="doll of dolls" :class="doll.remaining ? 'table-warning' :' '">
               {{--<td scope="row">@{{ doll.id }}</td>--}}
               <td>@{{ doll.name }}</td>
               <td class="text-center">@{{ doll.priority }}</td>
               <td class="text-center">@{{ doll.stock }}</td>
               <td class="text-center">@{{ doll.ideal }}</td>
+              <td class="text-center">@{{ doll.remaining }}</td>
               <td class="text-center">@{{ doll.price }}</td>
               <td>@{{ doll.rank }}</td>
               <td>@{{ doll.etsy_id }}</td>

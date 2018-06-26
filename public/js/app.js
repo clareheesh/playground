@@ -330,13 +330,14 @@ new Vue({
     }),
     dolls: {},
     sort: {
-      key: 'name',
-      order: 'asc'
+      key: 'remaining',
+      order: 'desc'
     },
     mode: 'new',
     totals: {
       stock: 0,
-      ideal: 0
+      ideal: 0,
+      value: 0
     }
   },
 
@@ -382,23 +383,27 @@ new Vue({
       axios.get('/dolls/all').then(function (response) {
         _this3.dolls = response.data;
 
-        _this3.sortBy(_this3.sort.key, false);
-
         // Recalculate totals
         var newStock = 0;
         var newIdeal = 0;
+        var newValue = 0;
 
         _this3.dolls.forEach(function (doll) {
-          doll.stock = doll.stock ? doll.stock : 0;
-          doll.ideal = doll.ideal ? doll.ideal : 0;
+          doll.stock = parseInt(doll.stock ? doll.stock : 0, 10);
+          doll.ideal = parseInt(doll.ideal ? doll.ideal : 0, 10);
+          doll.price = parseInt(doll.price ? doll.price : 0, 10);
 
           newStock += doll.stock;
-          newIdeal += doll.ideal > doll.stock ? doll.ideal - doll.stock : 0;
+          newIdeal += doll.remaining;
+          newValue += doll.price;
         });
 
         _this3.totals.stock = newStock;
         _this3.totals.ideal = newIdeal;
+        _this3.totals.value = newValue;
       });
+
+      this.sortBy(this.sort.key, false);
     },
     sortBy: function sortBy(key) {
       var flip = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;

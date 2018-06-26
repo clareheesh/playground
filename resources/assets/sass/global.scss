@@ -19,5 +19,9 @@ h1, h2, h3, h4, h5, h6, th, .btn {
 }
 
 .table-warning {
-  background-color: rgba(255, 232, 161, .05);
+  background-color: rgba(255, 232, 161, .4);
+
+  &:hover {
+    background-color: rgba(255, 232, 161, .6);
+  }
 }

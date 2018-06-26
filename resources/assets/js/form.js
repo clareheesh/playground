@@ -217,13 +217,14 @@ new Vue({
     }),
     dolls: {},
     sort: {
-      key: 'name',
-      order: 'asc'
+      key: 'remaining',
+      order: 'desc'
     },
     mode: 'new',
     totals: {
       stock: 0,
-      ideal: 0
+      ideal: 0,
+      value: 0
     }
   },
 
@@ -271,25 +272,29 @@ new Vue({
     fetchDolls() {
       axios.get('/dolls/all')
         .then(response => {
-          this.dolls = response.data;
-
-          this.sortBy(this.sort.key, false);
+          this.dolls = response.data
 
           // Recalculate totals
           let newStock = 0
           let newIdeal = 0
+          let newValue = 0
 
           this.dolls.forEach((doll) => {
-            doll.stock = doll.stock ? doll.stock : 0
-            doll.ideal = doll.ideal ? doll.ideal : 0
+            doll.stock = parseInt((doll.stock ? doll.stock : 0), 10)
+            doll.ideal = parseInt((doll.ideal ? doll.ideal : 0), 10)
+            doll.price = parseInt((doll.price ? doll.price : 0), 10)
 
             newStock += doll.stock
-            newIdeal += doll.ideal > doll.stock ? doll.ideal - doll.stock : 0
-          });
+            newIdeal += doll.remaining
+            newValue += doll.price
+          })
 
           this.totals.stock = newStock
           this.totals.ideal = newIdeal
+          this.totals.value = newValue
         })
+
+        this.sortBy(this.sort.key, false)
     },
 
     sortBy(key, flip = true) {

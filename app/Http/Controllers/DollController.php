@@ -8,6 +8,16 @@ use Illuminate\Http\Request;
 class DollController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -27,7 +37,7 @@ class DollController extends Controller
     public function all()
     {
         $dolls = Doll::all();
-
+        
         return response()->json($dolls, 200);
     }
 
@@ -42,8 +52,8 @@ class DollController extends Controller
         return $doll;
     }
 
-    /**
-     * Increaes the actual stock by 1
+    /**d
+     * Increase the actual stock by 1
      *
      * @param Request $request
      * @param $id

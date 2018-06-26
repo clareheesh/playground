@@ -8374,6 +8374,10 @@ th,
 }
 
 .table-warning {
-  background-color: rgba(255, 232, 161, 0.05);
+  background-color: rgba(255, 232, 161, 0.4);
+}
+
+.table-warning:hover {
+  background-color: rgba(255, 232, 161, 0.6);
 }
 
