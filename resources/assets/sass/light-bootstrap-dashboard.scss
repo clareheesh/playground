@@ -1,0 +1,69 @@
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700,200");
+
+// Bootstrap
+@import "node_modules/bootstrap/scss/bootstrap";
+
+// Bootstrap Select
+@import "node_modules/bootstrap-select/sass/bootstrap-select";
+
+// Bootstrap Switch
+@import "node_modules/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch";
+
+// Chartist
+// @import "node_modules/chartist/dist/scss/chartist";
+
+// Animate CSS
+//@import "node_modules/animate.css/animate";
+
+// Font Awesome
+//@import "node_modules/font-awesome/scss/font-awesome";
+
+// Pixeden Stroke 7 Icon
+@import "node_modules/pe7-icon/dist/scss/pe-icon-7-stroke";
+
+/*!
+
+ =========================================================
+ * Light Bootstrap Dashboard - v2.0.1 (Bootstrap 4)
+ =========================================================
+
+ * Product Page: http://www.creative-tim.com/product/light-bootstrap-dashboard
+ * Copyright 2017 Creative Tim (http://www.creative-tim.com)
+ * Licensed under MIT (https://github.com/creativetimofficial/light-bootstrap-dashboard/blob/master/LICENSE.md)
+
+ =========================================================
+
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+ */
+
+@import "lbd/variables";
+@import "lbd/mixins";
+
+@import "lbd/typography";
+
+// Core CSS
+@import "lbd/misc";
+@import "lbd/sidebar-and-main-panel";
+@import "lbd/buttons";
+@import "lbd/inputs";
+
+@import "lbd/alerts";
+@import "lbd/tables";
+
+@import "lbd/checkbox-radio-switch";
+@import "lbd/navbars";
+@import "lbd/footers";
+
+// Fancy Stuff
+@import "lbd/plugins/animate";
+@import "lbd/dropdown";
+@import "lbd/cards";
+@import "lbd/chartist";
+@import "lbd/responsive";
+@import "lbd/bootstrap-switch";
+
+// Nucleo Icons
+@import "lbd/partial-nucleo-icons";

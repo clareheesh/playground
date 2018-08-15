@@ -330,8 +330,8 @@ new Vue({
     }),
     dolls: {},
     sort: {
-      key: 'remaining',
-      order: 'desc'
+      key: 'name',
+      order: 'asc'
     },
     mode: 'new',
     totals: {
@@ -381,14 +381,14 @@ new Vue({
       var _this3 = this;
 
       axios.get('/dolls/all').then(function (response) {
-        _this3.dolls = response.data;
+        var dolls = response.data;
 
         // Recalculate totals
         var newStock = 0;
         var newIdeal = 0;
         var newValue = 0;
 
-        _this3.dolls.forEach(function (doll) {
+        dolls.forEach(function (doll) {
           doll.stock = parseInt(doll.stock ? doll.stock : 0, 10);
           doll.ideal = parseInt(doll.ideal ? doll.ideal : 0, 10);
           doll.price = parseInt(doll.price ? doll.price : 0, 10);
@@ -401,16 +401,17 @@ new Vue({
         _this3.totals.stock = newStock;
         _this3.totals.ideal = newIdeal;
         _this3.totals.value = newValue;
-      });
 
-      this.sortBy(this.sort.key, false);
+        _this3.dolls = _this3.sortBy(_this3.sort.key, false, dolls);
+      });
     },
     sortBy: function sortBy(key) {
       var flip = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+      var dolls = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this.dolls;
 
       this.sort.key = key;
 
-      this.dolls = this.dolls.sort(function (a, b) {
+      var sortedDolls = dolls.sort(function (a, b) {
         var x = a[key];
         var y = b[key];
 
@@ -418,10 +419,12 @@ new Vue({
       });
 
       if (this.sort.order === 'desc') {
-        this.dolls = this.dolls.reverse();
+        sortedDolls = sortedDolls.reverse();
       }
 
       if (flip) this.sort.order = this.sort.order === 'asc' ? 'desc' : 'asc';
+
+      return sortedDolls;
     }
   }
 });

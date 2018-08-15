@@ -36,7 +36,7 @@ class DollController extends Controller
      */
     public function all()
     {
-        $dolls = Doll::all();
+        $dolls = Doll::orderby('name')->get();
         
         return response()->json($dolls, 200);
     }

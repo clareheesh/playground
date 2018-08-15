@@ -217,8 +217,8 @@ new Vue({
     }),
     dolls: {},
     sort: {
-      key: 'remaining',
-      order: 'desc'
+      key: 'name',
+      order: 'asc'
     },
     mode: 'new',
     totals: {
@@ -249,7 +249,7 @@ new Vue({
       } else {
         this.form.patch(`/dolls/${this.form.id}`)
           .then(() => {
-            this.fetchDolls()
+            this.fetchDolls();
           });
       }
     },
@@ -272,47 +272,49 @@ new Vue({
     fetchDolls() {
       axios.get('/dolls/all')
         .then(response => {
-          this.dolls = response.data
+          let dolls = response.data;
 
           // Recalculate totals
-          let newStock = 0
-          let newIdeal = 0
-          let newValue = 0
+          let newStock = 0;
+          let newIdeal = 0;
+          let newValue = 0;
 
-          this.dolls.forEach((doll) => {
-            doll.stock = parseInt((doll.stock ? doll.stock : 0), 10)
-            doll.ideal = parseInt((doll.ideal ? doll.ideal : 0), 10)
-            doll.price = parseInt((doll.price ? doll.price : 0), 10)
+          dolls.forEach((doll) => {
+            doll.stock = parseInt((doll.stock ? doll.stock : 0), 10);
+            doll.ideal = parseInt((doll.ideal ? doll.ideal : 0), 10);
+            doll.price = parseInt((doll.price ? doll.price : 0), 10);
 
-            newStock += doll.stock
-            newIdeal += doll.remaining
-            newValue += doll.price
+            newStock += doll.stock;
+            newIdeal += doll.remaining;
+            newValue += doll.price;
           })
 
-          this.totals.stock = newStock
-          this.totals.ideal = newIdeal
-          this.totals.value = newValue
-        })
+          this.totals.stock = newStock;
+          this.totals.ideal = newIdeal;
+          this.totals.value = newValue;
 
-        this.sortBy(this.sort.key, false)
+          this.dolls = this.sortBy(this.sort.key, false, dolls);
+        })
     },
 
-    sortBy(key, flip = true) {
+    sortBy(key, flip = true, dolls = this.dolls) {
       this.sort.key = key;
 
-      this.dolls = this.dolls.sort(function (a, b) {
+      let sortedDolls = dolls.sort(function (a, b) {
         let x = a[key];
         let y = b[key];
 
         return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-      });
+      })
 
       if (this.sort.order === 'desc') {
-        this.dolls = this.dolls.reverse();
+        sortedDolls = sortedDolls.reverse();
       }
 
       if (flip)
         this.sort.order = this.sort.order === 'asc' ? 'desc' : 'asc';
+
+      return sortedDolls;
     }
   }
 });

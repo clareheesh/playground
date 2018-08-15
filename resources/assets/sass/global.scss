@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Fjalla+One|Roboto');
 
 $font-family-base: 'Roboto', $font-family-sans-serif;
+$color-primary: rgb(145, 192, 202);
 
 h1, h2, h3, h4, h5, h6, th, .btn {
   font-family: 'Fjalla One', $font-family-base;
@@ -23,5 +24,97 @@ h1, h2, h3, h4, h5, h6, th, .btn {
 
   &:hover {
     background-color: rgba(255, 232, 161, .6);
+  }
+}
+
+.form {
+  &--login {
+    width: 600px;
+    max-width: 100%;
+    padding: 50px;
+    font-size: 13px;
+    font-family: $font-family-base;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0 auto;
+    flex-direction: column;
+    text-align: center;
+
+    > div {
+      width: 100%;
+      position: relative;
+    }
+
+    input {
+      padding: 12px 15px;
+      border: 0;
+      border-radius: 2px;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    label, .text-muted {
+      font-size: 12px;
+      font-weight: normal;
+      text-transform: uppercase;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    input[type=checkbox] {
+      display: none;
+      position: relative;
+
+      + label {
+        display: inline-block;
+        margin-left: 0;
+        padding-left: 25px;
+
+        &:before {
+          content: '';
+          display: block;
+          position: absolute;
+          left: 0;
+          height: 10px;
+          width: 10px;
+          margin-top: 3px;
+          border: 1px solid $color-primary;
+          border-radius: 2px;
+        }
+      }
+
+      &:checked {
+        + label:before {
+          background-color: $color-primary;
+        }
+      }
+    }
+
+    label {
+      margin-bottom: 15px;
+      margin-left: 20px;
+    }
+
+    button {
+      display: inline-block;
+      text-align: center;
+      padding: 10px 40px;
+      text-transform: uppercase;
+      font-weight: normal;
+      color: white;
+      background-color: $color-primary;
+      border: 0;
+      border-radius: 2px;
+      margin-bottom: 20px;
+
+      &:hover {
+        background-color: darken($color-primary, 20%)
+      }
+    }
   }
 }

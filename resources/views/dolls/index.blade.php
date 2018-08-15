@@ -100,7 +100,7 @@
             <div class="card bg-light">
               <div class="card-body">
                 <h1>@{{ daysUntil }}</h1>
-                <p>Days Remaining</p>
+                <p>Days Remaining <small><em>(@{{ Math.floor(daysUntil / 7) }} weeks @{{ (daysUntil % 7) }} days)</em></small></p>
               </div>
             </div>
           </div>
